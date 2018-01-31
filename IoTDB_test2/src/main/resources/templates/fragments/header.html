@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link href="../../../resources/css/bootstrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/bootstrap.min.css}"/>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top" th:fragment="header">
+    <div class="container">
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li th:classappend="${module == 'index' ? 'active' : ''}">
+                    <a class="Link" href="#" th:href="@{/kaikki}">Print table</a>
+                </li>
+                <li th:classappend="${module == 'avg' ? 'active' : ''}">
+                    <a class="Link" href="#" th:href="@{/avg/abba}">Abbas average</a>
+                </li>
+                <li th:classappend="${module == 'avg' ? 'active' : ''}">
+                    <a class="Link" href="#" th:href="@{/avg/acdc}">Acdcs average</a>
+                </li>
+                <li th:classappend="${module == 'avg' ? 'active' : ''}">
+                    <a class="Link" href="#" th:href="@{/avg/iddqd}">Iddqds average</a>
+                </li>
+                <li th:classappend="${module == 'avg' ? 'active' : ''}">
+                    <a class="Link" href="#" th:href="@{/avg/idqkfa}">Idkfas average</a>
+                </li>
+                <li th:classappend="${module == 'kaikkiavg' ? 'active' : ''}">
+                    <a class="Link" href="#" th:href="@{/allsensors}">All averages</a>
+                </li>
+                <li th:classappend="${module == 'dummy' ? 'active' : ''}">
+                    <a class="Link" href="#" th:href="@{/dummy}">Get new value</a>
+                </li>
+            </ul>
+        </div>
+        <!--/.nav-collapse -->
+    </div>
+</nav>
+</body>
+</html>

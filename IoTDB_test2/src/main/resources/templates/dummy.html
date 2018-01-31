@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Dummy data</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/main.css" th:href="@{/css/main.css}"/>
+</head>
+<body>
+<div th:replace="~{fragments/header :: header}">Header</div>
+<h1>Dummy data for: <h1 th:text="${name}"></h1></h1>
+<div class="container">
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>TEMP Value</th>
+            <th>Pos in table</th>
+        </tr>
+        <tr th:each="data : ${dummy}">
+            <td th:text="${data.id}"></td>
+            <td th:text="${data.value}"></td>
+            <td th:text="${rowcount}"></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

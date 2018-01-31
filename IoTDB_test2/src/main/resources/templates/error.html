@@ -1,0 +1,14 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Terve H2</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/main.css" th:href="@{/css/main.css}"/>
+</head>
+<body>
+<div th:replace="~{fragments/header :: header}">Header</div>
+<h1>FEELS BAD MAN</h1>
+<div class="container">
+    <img th:src="@{http://i0.kym-cdn.com/entries/icons/mobile/000/002/830/sad_frog.jpg}"/>
+</div>
+</body>
+</html>

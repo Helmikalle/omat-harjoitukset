@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Terve H2</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/main.css" th:href="@{/css/main.css}"/>
+</head>
+<body>
+<div th:replace="~{fragments/header :: header}">Header</div>
+<h1>Averages</h1>
+<div>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>TEMP Value</th>
+            <th>Row count</th>
+        </tr>
+        <tr>
+            <td th:text="${name}"></td>
+            <td th:text="${average}"></td>
+            <td th:text="${rowcount}"></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

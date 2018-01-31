@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Terve H2</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/main.css" th:href="@{/css/main.css}"/>
+</head>
+<body>
+<div th:replace="~{fragments/header :: header}">Header</div>
+<h1>All data</h1>
+<div class="container">
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>TEMP Value</th>
+        </tr>
+        <tr>
+            <td th:text="${datassensor}"></td>
+            <td th:text="${sensoravg}"></td>
+        </tr>
+        <tr>
+            <td>Helsinki</td>
+            <td th:text="${weather}"></td>
+        </tr>
+        <tr>
+            <td>Temperature difference</td>
+            <td th:text="${compare}"></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
