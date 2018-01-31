@@ -90,4 +90,12 @@ public class DatasDAOImpl implements DatasDAO {
         List<Datas> lastAdded = jdbcTemplate.query(sql, new Object[] { id }, new DataRowMapper());
         return lastAdded;
     }
+
+    @Override
+    public float getLatestValue(String id) {
+        String sql = "SELECT id,value,time FROM datas WHERE id = ? AND time IN (SELECT MAX(time) FROM datas WHERE id = ?);";
+        List<Values> latestValue = jdbcTemplate.query(sql, new Object[] { id, id }, new ValueRowMapper());
+
+        return latestValue.get(0).getValue();
+    }
 }

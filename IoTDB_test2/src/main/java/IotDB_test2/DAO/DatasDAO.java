@@ -15,4 +15,5 @@ public interface DatasDAO {
     int getRowCount(String id);
     void createSensor() throws IOException;
     List<Datas> selectAdded(String id);
+    float getLatestValue(String id);
 }

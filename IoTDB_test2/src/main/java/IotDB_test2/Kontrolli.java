@@ -34,7 +34,7 @@ public class Kontrolli {
         model.addAttribute("rowcount", dao.getRowCount(id));
         return "avg";
     }
-
+    //Hakee uuden arvon ja syöttää sen databaseen
     @RequestMapping("/dummy")
     public String daotestin(Model model) {
         try {
@@ -47,16 +47,16 @@ public class Kontrolli {
         model.addAttribute("rowcount",dao.getRowCount("iddqd"));
         return "dummy";
     }
-
+    //Hakee kaikken sensoreiden keskiarvot
     @RequestMapping("/allsensors")
     public String allAverages(Model model) {
         model.addAttribute("datas", dao.sensorit());
         return "kaikkiavg";
     }
-
+    //Vertaa tietyn sensorin viimeisimpää lämpötilaa Helsingin tämän hetken lämpötilaan
     @RequestMapping("/comparetemp/{id}")
     public String compareTemp(Model model, @PathVariable(name = "id") String id) {
-        float datasTemp = dao.getAvgValue(id);
+        float datasTemp = dao.getLatestValue(id);
         float dif = 0;
         float weather = 0;
         try {
