@@ -36,12 +36,16 @@ public class SensorDataService{
             datas.setValue(newSensorData.getData());
 
         }catch (IOException e) {
-            System.out.println("There was an error" + e.getMessage());
+            System.out.println("There was an error: " + e.getMessage());
         }
         return datas;
     }
-    //Poorly named
-    public Averages averageObj(String id) {
+
+    public void insertNewData() throws IOException {
+        datasDAO.insertDataToDB();
+    }
+
+    public Averages averageTempAndRowCount(String id) {
         Averages avgObj = new Averages();
         List<SensorData> datasList = datasDAO.valueObj(id);
         float avgValue = 0;
@@ -101,5 +105,8 @@ public class SensorDataService{
             datasObj.setTime(dataList.getTime());
         }
         return datasObj;
+    }
+    public List<SensorData> findAll() {
+        return datasDAO.findAll();
     }
 }
