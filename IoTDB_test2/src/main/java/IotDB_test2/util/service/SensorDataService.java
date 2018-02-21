@@ -1,18 +1,14 @@
 package IotDB_test2.util.service;
 
 import IotDB_test2.DAO.daoimpl.DatasDAOImpl;
-import IotDB_test2.DAO.daoimpl.UrlAccess;
 import IotDB_test2.model.Averages;
 import IotDB_test2.model.SensorData;
-import IotDB_test2.model.FetchNewSensorData;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,24 +18,6 @@ public class SensorDataService{
     private DatasDAOImpl datasDAO;
     @Autowired
     private UrlAccess urlAccess;
-
-    //wierd name
-    public SensorData createSensor() throws IOException {
-        FetchNewSensorData newSensorData;
-        SensorData datas = new SensorData();
-        ObjectMapper mapper = new ObjectMapper();
-        URL url = new URL("http://dummy-sensors.azurewebsites.net/api/sensor/iddqd");
-        try {
-            newSensorData = mapper.readValue(url,FetchNewSensorData.class);
-            datas.setId(newSensorData.getId());
-            datas.setTime(newSensorData.getTimestamp());
-            datas.setValue(newSensorData.getData());
-
-        }catch (IOException e) {
-            System.out.println("There was an error: " + e.getMessage());
-        }
-        return datas;
-    }
 
     public void insertNewData() throws IOException {
         datasDAO.insertDataToDB();

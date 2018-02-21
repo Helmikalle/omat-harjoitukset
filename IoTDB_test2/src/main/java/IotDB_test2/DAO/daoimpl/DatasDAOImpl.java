@@ -6,6 +6,7 @@ import IotDB_test2.util.mappers.DataRowMapper;
 import IotDB_test2.util.mappers.IdRowMapper;
 import IotDB_test2.util.mappers.ValueRowMapper;
 import IotDB_test2.util.service.SensorDataService;
+import IotDB_test2.util.service.UrlAccess;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -20,6 +21,8 @@ public class DatasDAOImpl implements DatasDAO {
     private SensorDataService sDS;
     @Autowired
     JdbcTemplate jdbcTemplate;
+    @Autowired
+    private UrlAccess urlAccess;
 
 
     @Override
@@ -31,7 +34,7 @@ public class DatasDAOImpl implements DatasDAO {
     @Override
     public void insertDataToDB() throws IOException {
         SensorData datas;
-        datas = sDS.createSensor();
+        datas = urlAccess.fetchNewSensorData();
         jdbcTemplate.update("INSERT INTO datas (id, time, value) VALUES (?,?,?)",
                 datas.getId(),datas.getTime(),datas.getValue());
         System.out.println("saved");
