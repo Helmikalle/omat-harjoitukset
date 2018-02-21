@@ -23,7 +23,7 @@ public class SensorDataService{
     @Autowired
     private WeatherDAOImpl weatherDAO;
 
-
+    //wierd name
     public SensorData createSensor() throws IOException {
         FetchNewSensorData newSensorData;
         SensorData datas = new SensorData();
