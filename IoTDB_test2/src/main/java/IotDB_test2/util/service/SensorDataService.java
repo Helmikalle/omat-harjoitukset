@@ -20,7 +20,7 @@ public class SensorDataService{
     private UrlAccess urlAccess;
 
     public void insertNewData() throws IOException {
-        datasDAO.insertDataToDB();
+        datasDAO.insertDataToDB(urlAccess.fetchNewSensorData());
     }
 
     public Averages averageTempAndRowCount(String id) {

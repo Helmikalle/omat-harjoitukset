@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface DatasDAO {
     List<SensorData> findAll();
-    void insertDataToDB () throws IOException;
+    void insertDataToDB (SensorData datas) throws IOException;
     List<SensorData> selectAdded(String id);
     List<SensorData> sensors();
     List<SensorData> valueObj(String id);

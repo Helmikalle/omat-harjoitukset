@@ -12,7 +12,6 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import java.io.IOException;
 import java.util.List;
 
 @Repository
@@ -32,9 +31,7 @@ public class DatasDAOImpl implements DatasDAO {
     }
 
     @Override
-    public void insertDataToDB() throws IOException {
-        SensorData datas;
-        datas = urlAccess.fetchNewSensorData();
+    public void insertDataToDB(SensorData datas) {
         jdbcTemplate.update("INSERT INTO datas (id, time, value) VALUES (?,?,?)",
                 datas.getId(),datas.getTime(),datas.getValue());
         System.out.println("saved");
