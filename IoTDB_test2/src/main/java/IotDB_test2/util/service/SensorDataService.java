@@ -40,7 +40,7 @@ public class SensorDataService{
         }
         return datas;
     }
-
+    //Poorly named
     public Averages averageObj(String id) {
         Averages avgObj = new Averages();
         List<Datas> datasList = datasDAO.valueObj(id);
