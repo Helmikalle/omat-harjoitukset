@@ -1,6 +1,10 @@
 package IotDB_test2.model;
 
 import java.sql.Timestamp;
+/*
+THIS IS USED ONLY FOR GETTING DATA FROM URL.
+THE DATA COMING IN IS NAMED DIFFERENTLY THAN THE DATA IN DATABASE (data = value and timestamp = time)
+ */
 
 public class FetchNewSensorData {
     private String Id;
@@ -40,12 +44,4 @@ public class FetchNewSensorData {
         this.data = valueData;
     }
 
-    @Override
-    public String toString() {
-        return "DummyData{" +
-                "Id='" + Id + '\'' +
-                ", timestamp=" + timestamp +
-                ", data=" + data +
-                '}';
-    }
 }
