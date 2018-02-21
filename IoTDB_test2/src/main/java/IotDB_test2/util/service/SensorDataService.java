@@ -1,7 +1,7 @@
 package IotDB_test2.util.service;
 
 import IotDB_test2.DAO.daoimpl.DatasDAOImpl;
-import IotDB_test2.DAO.daoimpl.WeatherDAOImpl;
+import IotDB_test2.DAO.daoimpl.UrlAccess;
 import IotDB_test2.model.Averages;
 import IotDB_test2.model.SensorData;
 import IotDB_test2.model.FetchNewSensorData;
@@ -21,7 +21,7 @@ public class SensorDataService{
     @Autowired @Lazy
     private DatasDAOImpl datasDAO;
     @Autowired
-    private WeatherDAOImpl weatherDAO;
+    private UrlAccess urlAccess;
 
     //wierd name
     public SensorData createSensor() throws IOException {
@@ -84,7 +84,7 @@ public class SensorDataService{
     public float getLatestTemp() {
         float weather = 0;
         try {
-            weather = weatherDAO.fetchWeatherData().getTemperature();
+            weather = urlAccess.fetchWeatherData().getTemperature();
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
