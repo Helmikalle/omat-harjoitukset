@@ -2,15 +2,15 @@ package IotDB_test2.model;
 
 import java.sql.Timestamp;
 
-public class Datas {
+public class SensorData {
     private String id;
     private Timestamp time;
     private float value;
 
-    public Datas() {
+    public SensorData() {
     }
 
-    public Datas(String id, Timestamp time, float value) {
+    public SensorData(String id, Timestamp time, float value) {
         this.id = id;
         this.time = time;
         this.value = value;

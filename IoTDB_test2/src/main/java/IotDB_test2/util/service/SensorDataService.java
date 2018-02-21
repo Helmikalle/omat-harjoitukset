@@ -3,7 +3,7 @@ package IotDB_test2.util.service;
 import IotDB_test2.DAO.daoimpl.DatasDAOImpl;
 import IotDB_test2.DAO.daoimpl.WeatherDAOImpl;
 import IotDB_test2.model.Averages;
-import IotDB_test2.model.Datas;
+import IotDB_test2.model.SensorData;
 import IotDB_test2.model.FetchNewSensorData;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,9 +24,9 @@ public class SensorDataService{
     private WeatherDAOImpl weatherDAO;
 
 
-    public Datas createSensor() throws IOException {
+    public SensorData createSensor() throws IOException {
         FetchNewSensorData newSensorData;
-        Datas datas = new Datas();
+        SensorData datas = new SensorData();
         ObjectMapper mapper = new ObjectMapper();
         URL url = new URL("http://dummy-sensors.azurewebsites.net/api/sensor/iddqd");
         try {
@@ -43,9 +43,9 @@ public class SensorDataService{
     //Poorly named
     public Averages averageObj(String id) {
         Averages avgObj = new Averages();
-        List<Datas> datasList = datasDAO.valueObj(id);
+        List<SensorData> datasList = datasDAO.valueObj(id);
         float avgValue = 0;
-        for (Datas avgValue1 : datasList) {
+        for (SensorData avgValue1 : datasList) {
             avgValue += avgValue1.getValue();
         }
         avgObj.setAverageValue(avgValue / datasList.size());
@@ -55,7 +55,7 @@ public class SensorDataService{
 
     public List<Averages> allSensors() {
         List<Averages> sensorsAvgList = new ArrayList<>();
-        for (Datas aSensorList : datasDAO.sensors()) {
+        for (SensorData aSensorList : datasDAO.sensors()) {
             Averages avg = new Averages();
             avg.setId(aSensorList.getId());
             avg.setAverageValue(getAvgValue(aSensorList.getId()));
@@ -70,8 +70,8 @@ public class SensorDataService{
 
     public float getAvgValue(String id) {
         float avgValue = 0;
-        List<Datas> valueList = datasDAO.valueObj(id);
-        for (Datas avgValue1 : valueList) {
+        List<SensorData> valueList = datasDAO.valueObj(id);
+        for (SensorData avgValue1 : valueList) {
             avgValue += avgValue1.getValue();
         }
         return avgValue / valueList.size();
@@ -92,10 +92,10 @@ public class SensorDataService{
         dif = datasTemp - getLatestTemp();
         return dif;
     }
-    public Datas latestAddedValueForId(String id) {
-        Datas datasObj = new Datas();
-        List<Datas> list = datasDAO.selectAdded(id);
-        for (Datas dataList:list) {
+    public SensorData latestAddedValueForId(String id) {
+        SensorData datasObj = new SensorData();
+        List<SensorData> list = datasDAO.selectAdded(id);
+        for (SensorData dataList:list) {
             datasObj.setValue(dataList.getValue());
             datasObj.setId(dataList.getId());
             datasObj.setTime(dataList.getTime());

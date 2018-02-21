@@ -1,15 +1,15 @@
 package IotDB_test2.util.mappers;
 
-import IotDB_test2.model.Datas;
+import IotDB_test2.model.SensorData;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class DataRowMapper implements RowMapper<Datas> {
+public class DataRowMapper implements RowMapper<SensorData> {
     @Override
-    public Datas mapRow(ResultSet resultSet, int i) throws SQLException {
-        Datas data = new Datas();
+    public SensorData mapRow(ResultSet resultSet, int i) throws SQLException {
+        SensorData data = new SensorData();
         data.setId(resultSet.getString("id"));
         data.setTime(resultSet.getTimestamp("time"));
         data.setValue(resultSet.getFloat("value"));
